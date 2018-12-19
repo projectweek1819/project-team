@@ -23,7 +23,9 @@ function make2Darray(cols, rows) {
 
     //places random color values in each spot; used to give the created
     //rectangles the color.
+    details = [];
     for (var i = 0; i < cols; i++) {
+        det = [];
         for (var j = 0; j < rows; j++) {
             playField[i][j] = random(colors);
             var x = i * 100;
@@ -31,7 +33,9 @@ function make2Darray(cols, rows) {
             fill(playField[i][j]);
             stroke(90);
             rect(x, y, 100, 100);
+            det.push({color: playField[i][j], position: {x: x, y: y}, width: 100});
         }
+        details.push(det);
     }
     return playField;
 }
