@@ -48,23 +48,39 @@ function heightArray(grid){
   return grid.length;
 }
 
-function horizontalChainAt(grid,position){
-  x = position.x
-  y = position.y
-  let c =1;
-  let i = 100;
-  while(grid[y][x-i].color == grid[y][x].color){
-      i++
-      c++
-  }
-  i = 100;
-  while(grid[y][x+i].color == grid[y][x].color){
-      i++
-      c++
-  }
-  return c;
+function horizontalChainAt(grid, position){
+    x = position.x/100;
+    y = position.y/100;
+    let t = 1;
+    let i = 1;
+    while(x-i>-1 && grid[x-i][y].color == grid[x][y].color){
+        i++;
+        t++;
+    }
+    i = 1;
+    while(x+i<cols && grid[x+i][y].color == grid[x][y].color){
+        i++;
+        t++;
+    }
+    return t;
 }
 
+function verticalChainAt(grid, position){
+    x = position.x/100;
+    y = position.y/100;
+    let t = 1;
+    let i = 1;
+    while(y - i >= 0 && grid[x][y-i].color == grid[x][y].color){
+        i++;
+        t++;
+    }
+    i = 1;
+    while(y + i < rows && grid[x][y+i].color == grid[x][y].color){
+        i++;
+        t++;
+    }
+    return t;
+}
 
 
 
