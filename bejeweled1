@@ -2,6 +2,15 @@ var cols = 7;
 var rows = 7;
 var colors = ["red", "green", "blue"];
 
+function make2Darray(cols, rows) {
+    var playField = new Array(cols);
+    for (var i = 0; i < playField.length; i++) {
+      playField[i] = new Array(rows);
+    }
+    return playField;
+  }
+
+
 
 function setup(){
   createCanvas(700, 700);
@@ -19,14 +28,6 @@ function draw(){
   noLoop();
 }
 
-function make2Darray(cols, rows) {
-  var playField = new Array(cols);
-  for (var i = 0; i < playField.length; i++) {
-    playField[i] = new Array(rows);
-  }
-  return playField;
-}
-
 function createEmptyArray(){
   for(var i = 0; i < cols; i++){
     for(var j = 0; j < rows; j++){
@@ -39,5 +40,6 @@ function createEmptyArray(){
   }
   return true;
 }
+
 
 
