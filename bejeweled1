@@ -2,39 +2,41 @@ var cols = 7;
 var rows = 7;
 var colors = ["red", "green", "blue"];
 
-function setup(){
-  createCanvas(700, 700);
-   playField = make2Darray(cols, rows);
-   for (var i = 0; i < cols; i++) {
-     for (var j = 0; j < rows; j++) {
-       playField[i][j] = random(colors);
-     }
-   }
- }
- 
- function draw(){
-   background(255);
-   createEmptyArray();
-  noLoop();
+function setup() {
+    createCanvas(700, 700);
+    playField = make2Darray(cols, rows);
+    insertColors();
 }
+
+function draw() {
+    background(255);
+    createEmptyArray();
+    noLoop();
+}
+
 
 function make2Darray(cols, rows) {
-  var playField = new Array(cols);
-  for (var i = 0; i < playField.length; i++) {
-    playField[i] = new Array(rows);
-  }
-  return playField;
+    var playField = new Array(cols);
+    for (var i = 0; i < playField.length; i++) {
+        playField[i] = new Array(rows);
+    }
+    return playField;
 }
-
-function createEmptyArray(){
-  for(var i = 0; i < cols; i++){
-    for(var j = 0; j < rows; j++){
-       var x = i *100;
-       var y = j *100;
-       fill(playField[i][j]);
-       stroke(90);
-       rect(x, y, 100, 100);
-     }
-   }
-   return true;
+function insertColors() {
+    for (var i = 0; i < cols; i++) {
+        for (var j = 0; j < rows; j++) {
+            playField[i][j] = random(colors);
+        }
+    }
+}
+function createEmptyArray() {
+    for (var i = 0; i < cols; i++) {
+        for (var j = 0; j < rows; j++) {
+            var x = i * 100;
+            var y = j * 100;
+            fill(playField[i][j]);
+            stroke(90);
+            rect(x, y, 100, 100);
+        }
+    }
 }
