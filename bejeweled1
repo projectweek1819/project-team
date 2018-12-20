@@ -43,7 +43,7 @@ function make2Darray(cols, rows) {
 function replaceEmptySpots() {
     for (var i = 0; i < cols; i++) {
         for (var j = 0; j < rows; j++) {
-            if(playField[j][i] == "" || playField[j][i].color != colors[0] || playField[j][i].color != colors[1] || playField[j][i].color != colors[2] || playField[j][i].color != colors[3] || playField[j][i].color != colors[4]) {  
+            if(playField[j][i] == "") {  
                 var randomColor = random(colors);
                 x = i * 100;
                 y = j * 100;
@@ -56,6 +56,16 @@ function replaceEmptySpots() {
         }
     }
     return playField;
+}
+
+//customly change block color on given positio in array playField
+function updateBlockColor(j,i , strKleur) {
+    x = i * 100;
+    y = j * 100;
+    playField[j][i] = { color: strKleur, position: { x: x, y: y}, width: 100};
+    fill(playField[j][i].color);
+    stroke(85);
+    rect(x, y, 100, 100);
 }
 
 function widthArray(grid){
