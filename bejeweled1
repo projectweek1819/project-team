@@ -26,21 +26,20 @@ function make2Darray(cols, rows) {
     //used to give the created rectangles the color.
     for (var i = 0; i < cols; i++) {
         for (var j = 0; j < rows; j++) {
-            var randomColor = 22;
+            var randomColor = random(colors) //22;
             x = i * 100;
             y = j * 100;
             playField[j][i] = { color: randomColor, position: { x: x, y: y}, width: 100};
-
+            //fills block with exact same randomColor value as the element
             fill(playField[j][i].color);
             stroke(85);
             rect(x, y, 100, 100);
-
         }
     }
     return playField;
-
 }
-//replaces empty spots
+
+//replaces empty array elements
 function replaceEmptySpots() {
     for (var i = 0; i < cols; i++) {
         for (var j = 0; j < rows; j++) {
@@ -48,10 +47,11 @@ function replaceEmptySpots() {
                 var randomColor = random(colors);
                 x = i * 100;
                 y = j * 100;
-                fill(randomColor);
+                playField[j][i] = { color: randomColor, position: { x: x, y: y}, width: 100};
+                //fills block with exact same randomColor value as the element
+                fill(playField[j][i].color);
                 stroke(85);
                 rect(x, y, 100, 100);
-                playField[j][i] = { color: randomColor, position: { x: x, y: y}, width: 100};
             }
         }
     }
