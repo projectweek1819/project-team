@@ -97,3 +97,8 @@ function findElement(position) { //geeft de beginpositie van het aangeklikte vak
     y = position.y - position.y%100;
     return element = {x: x, y: y};
 }
+
+function mousePressed(){
+  console.log( findElement({x: mouseX, y: mouseY}));
+  return findElement({x: mouseX, y: mouseY});
+}
