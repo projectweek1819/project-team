@@ -151,46 +151,24 @@ function copyArray(grid){ //maakt een kopie van de geselecteerde grid
 }
 
 function removeChains(grid){
-  
-  const result = {};
-  const positions = [];
 
-  for (let x = 0; x < rows; x++){
-    let y = 0;
-    while (y < cols){
-        const n = verticalChainAt(grid, {x, y});
-        if (n >2){
-            for ( let i = 0; i !== n; i++){
-                positions.push({x, y: y + i});
+    var places = []
+    for (i = 0; i < widthArray(grid); i++){
+        for (j = 0; j < heightArray(grid); j++)
+        {
+            if (verticalChainAt(grid, {x: (i*100), y: (j*100)}) > 2) {
+               places.push({x: i, y: j})
+            }
+            if (horizontalChainAt(grid, {x: (i*100), y: (j*100)}) > 2){
+                places.push({x: i, y: j})
             }
         }
-        y += n;
     }
-}
+    for (v=0; v < places.length; v++) {
+       let x = places[v].x
+       let  y = places[v].y
+        updateBlockColor(y, x, "black")
+    }
 
-  for (let y = 0; y < cols; y++){
-      let x = 0;
-      while (x < rows){
-          const n = horizontalChainAt(grid, {x, y});
-          if (n >2){
-              for ( let i = 0; i !== n; i++){
-                  positions.push({x: x + i, y});
-              }
-          }
-          x += n;
-      }
-  }
-
- 
-
-  for(const position of positions){
-      const {x,y} = position;
-      const color = grid[y][x];
-      result[color] = (result[color] || 0 ) + 1;;
-  }
-
-  for(const {x,y} of positions){
-      grid[y][x] = "";
-  }
-  return result;
+    return playField;
 }
