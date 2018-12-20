@@ -32,7 +32,7 @@ function make2Darray(cols, rows) {
             fill(randomColor);
             stroke(85);
             rect(x, y, 100, 100);
-            playField[i][j] = {color: randomColor, position: {x: x, y: y}, width: 100};
+            playField[j][i] = {color: randomColor, position: {x: x, y: y}, width: 100};
         }
     }
     return playField;
@@ -52,12 +52,12 @@ function horizontalChainAt(grid, position){
     y = position.y/100;
     let t = 1;
     let i = 1;
-    while(x-i>-1 && grid[x-i][y].color == grid[x][y].color){
+    while(x-i>-1 && grid[y][x-i].color == grid[y][x].color){
         i++;
         t++;
     }
     i = 1;
-    while(x+i<cols && grid[x+i][y].color == grid[x][y].color){
+    while(x+i<cols && grid[y][x+i].color == grid[y][x].color){
         i++;
         t++;
     }
@@ -69,12 +69,12 @@ function verticalChainAt(grid, position){
     y = position.y/100;
     let t = 1;
     let i = 1;
-    while(y - i >= 0 && grid[x][y-i].color == grid[x][y].color){
+    while(y - i >= 0 && grid[y-i][x].color == grid[y][x].color){
         i++;
         t++;
     }
     i = 1;
-    while(y + i < rows && grid[x][y+i].color == grid[x][y].color){
+    while(y + i < rows && grid[y+i][x].color == grid[y][x].color){
         i++;
         t++;
     }
