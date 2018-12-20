@@ -110,28 +110,17 @@ function verticalChainAt(grid, position){
     return t;
 }
 
-// function swap(grid,p,q){ //verwisselt de kleuren van twee vakken binnen het playField
-//     xp = p.x/100;
-//     xq = q.x/100;
-//     yp = p.y/100;
-//     yq = q.y/100;
-//     let wisselkleur = grid[yp][xp].color;
-//     grid[yp][xp].color = grid[yq][xq].color;
-//     grid[yq][xq].color = wisselkleur;
-//     return playField;
-// }
-
-
-function swap(grid,p,q){
-  p.x = p.x/100;
-  p.y = p.y/100;
-  q.x = q.x/100;
-  q.y = q.y/100; 
-   let copyPlayfield = copyArray(playField);
-   let store = copyPlayfield[p.y][p.x]
-   copyPlayfield[p.y][p.x] = copyPlayfield[q.y][q.x];
-   copyPlayfield[q.y][q.x] = store;
-   return copyPlayfield;  
+function swap(grid,p,q){ //verwisselt de kleuren van twee vakken binnen het playField
+    xp = p.x/100;
+    xq = q.x/100;
+    yp = p.y/100;
+    yq = q.y/100;
+    let wisselblock = grid[yp][xp];
+    grid[yp][xp] = grid[yq][xq];
+    grid[yq][xq] = wisselblock;
+    updateBlockColor(xp,xq, wisselblock.color);
+    updateBlockColor(yp,yq, grid[yp][xp].color);
+    return playField;
 }
 
 function findElement(position) { //geeft de beginpositie van het aangeklikte vakje aan
