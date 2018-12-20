@@ -111,15 +111,14 @@ function verticalChainAt(grid, position){
 }
 
 function swap(grid,p,q){ //verwisselt de kleuren van twee vakken binnen het playField
-    xp = p.x/100;
-    xq = q.x/100;
-    yp = p.y/100;
-    yq = q.y/100;
-    let wisselblock = grid[yp][xp];
-    grid[yp][xp] = grid[yq][xq];
-    grid[yq][xq] = wisselblock;
-    updateBlockColor(xp,xq, wisselblock.color);
-    updateBlockColor(yp,yq, grid[yp][xp].color);
+    px = p.x/100;
+    py = p.y/100;
+    qx = q.x/100;
+    qy = q.y/100;
+    var blockKleur1 = playField[py][px].color
+    var blockKleur2 = playField[qy][qx].color
+    updateBlockColor(py,px, blockKleur2);
+    updateBlockColor(qy,qx, blockKleur1);
     return playField;
 }
 
