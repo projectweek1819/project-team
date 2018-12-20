@@ -81,6 +81,19 @@ function verticalChainAt(grid, position){
     return t;
 }
 
+function swap(grid,p,q){ //verwisselt de kleuren van twee vakken binnen het playField
+    xp = p.x/100;
+    xq = q.x/100;
+    yp = p.y/100;
+    yq = q.y/100;
+    let wisselkleur = grid[yp][xp].color;
+    grid[yp][xp].color = grid[yq][xq].color;
+    grid[yq][xq].color = wisselkleur;
+    return playField;
+}
 
-
-
+function findElement(position) { //geeft de beginpositie van het aangeklikte vakje aan
+    x = position.x - position.x%100;
+    y = position.y - position.y%100;
+    return element = {x: x, y: y};
+}
