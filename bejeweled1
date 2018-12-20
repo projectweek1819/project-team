@@ -26,7 +26,7 @@ function make2Darray(cols, rows) {
     //used to give the created rectangles the color.
     for (var i = 0; i < cols; i++) {
         for (var j = 0; j < rows; j++) {
-            var randomColor = 255;
+            var randomColor = random(colors);
             x = i * 100;
             y = j * 100;
             playField[j][i] = { color: randomColor, position: { x: x, y: y}, width: 100};
@@ -126,3 +126,14 @@ function mousePressed(){
   console.log(mousePos);
 }
 
+function copyArray(grid){ //maakt een kopie van de geselecteerde grid
+    copy = [];
+    for (var i = 0; i < cols; i++) {
+        copij = [];
+        for (var j = 0; j < rows; j++) {
+            copij.push(grid[j][i]);
+        }
+        copy.push(copij);
+    }
+    return copy;
+}
