@@ -99,6 +99,11 @@ function findElement(position) { //geeft de beginpositie van het aangeklikte vak
 }
 
 function mousePressed(){
-  console.log( findElement({x: mouseX, y: mouseY}));
-  return findElement({x: mouseX, y: mouseY});
+  
+  if(mouseX<rows*100 && mouseY<cols*100){
+    return mousePos = findElement({x: mouseX, y: mouseY});
+    
+  }
+  console.log(mousePos);
 }
+
