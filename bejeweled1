@@ -193,3 +193,47 @@ function removeChains(grid){
   return result;
 }
 
+function removeChains(grid){
+    var r = 0;
+    var b = 0;
+    var g = 0;
+    var left = 0
+    var right = 0
+    var down = 0
+    var up = 0
+    for (i = 0; i < widthArray(grid); i++){
+        for (j = 0; j < heightArray(grid); j++)
+        {
+            if (verticalChainAt(grid, {x: (i*100), y: (j*100)}) > 2) {
+                grid[i][j].color = "black"
+            }
+            if (horizontalChainAt(grid, {x: (i*100), y: (j*100)}) > 2){
+               grid[i][j].color = "black"
+            }
+        }
+    }
+    return playField;
+}
+
+function removeChains(grid){
+    var r = 0;
+    var b = 0;
+    var g = 0;
+    var left = 0
+    var right = 0
+    var down = 0
+    var up = 0
+    for (i = 0; i < widthArray(grid); i++){
+        for (j = 0; j < heightArray(grid); j++)
+        {
+            if (verticalChainAt(grid, {x: (i*100), y: (j*100)}) > 2) {
+                grid[i][j].color = "black"
+            }
+            if (horizontalChainAt(grid, {x: (i*100), y: (j*100)}) > 2){
+               grid[i][j].color = "black"
+            }
+        }
+    }
+    return playField;
+}
+
