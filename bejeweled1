@@ -4,7 +4,7 @@ var colors = ["#800014" /*red*/ , "#3F8000" /*green*/ , "#0354A6" /*blue*/ , "or
 
 
 function setup() {
-    createCanvas(cols*100, rows*100); // responsive canvas
+    createCanvas(cols*100+1, rows*100+1); // responsive canvas (+1 voor laatste lijn)
 }
 
 function draw() {
@@ -26,7 +26,7 @@ function make2Darray(cols, rows) {
     //used to give the created rectangles the color.
     for (var i = 0; i < cols; i++) {
         for (var j = 0; j < rows; j++) {
-            var randomColor = random(colors) //22;
+            var randomColor = 255;
             x = i * 100;
             y = j * 100;
             playField[j][i] = { color: randomColor, position: { x: x, y: y}, width: 100};
@@ -43,7 +43,7 @@ function make2Darray(cols, rows) {
 function replaceEmptySpots() {
     for (var i = 0; i < cols; i++) {
         for (var j = 0; j < rows; j++) {
-            if(playField[j][i] == "" || playField[j][i].color != (colors[0] || colors[1] || colors[2] || colors[3] || colors[4] || colors[5])) {  
+            if(playField[j][i] == "" || playField[j][i].color != colors[0] || playField[j][i].color != colors[1] || playField[j][i].color != colors[2] || playField[j][i].color != colors[3] || playField[j][i].color != colors[4]) {  
                 var randomColor = random(colors);
                 x = i * 100;
                 y = j * 100;
