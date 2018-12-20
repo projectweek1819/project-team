@@ -16,28 +16,27 @@ function draw() {
 
 
 function make2Darray(cols, rows) {
-  var playField = new Array(cols);
-  for (var i = 0; i < playField.length; i++) {
-      playField[i] = new Array(rows);
-  }
+    var playField = new Array(cols);
+    for (var i = 0; i < playField.length; i++) {
+        playField[i] = new Array(rows);
+    }
 
-  //places random color values in each spot; used to give the created
-  //rectangles the color.
-  details = [];
-  for (var i = 0; i < cols; i++) {
-      det = [];
-      for (var j = 0; j < rows; j++) {
-          playField[i][j] = random(colors);
-          var x = i * 100;
-          var y = j * 100;
-          fill(playField[i][j]);
-          stroke(90);
-          rect(x, y, 100, 100);
-          det.push({color: playField[i][j], position: {x: x, y: y}, width: 100});
-      }
-      details.push(det);
-  }
-  return playField;
+    //places random color values in each spot; used to give the created
+    //rectangles the color.
+    
+    for (var i = 0; i < cols; i++) {
+        for (var j = 0; j < rows; j++) {
+            var randomColor = random(colors);
+            var x = i * 100;
+            var y = j * 100;
+            fill(randomColor);
+            stroke(85);
+            rect(x, y, 100, 100);
+            playField[i][j] = {color: randomColor, position: {x: x, y: y}, width: 100};
+        }
+    }
+    return playField;
+
 }
 
 function widthArray(grid){
