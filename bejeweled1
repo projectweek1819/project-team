@@ -1,9 +1,9 @@
-var cols = 7;
-var rows = 7;
-var colors = ["#800014"/*red*/, "#3F8000"/*green*/, "#0354A6"/*blue*/, "orange", "purple", "#CC7722"/*Ochre*/];
+var cols = 7; //just change this nr if you want it to be biiger
+var rows = cols;
+var colors = ["#800014" /*red*/ , "#3F8000" /*green*/ , "#0354A6" /*blue*/ , "orange", "purple", "#CC7722" /*Ochre*/ ];
 
 function setup() {
-    createCanvas(700, 700);
+    createCanvas(cols*100, rows*100); // responsive canvas
 }
 
 function draw() {
