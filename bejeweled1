@@ -43,7 +43,7 @@ function make2Darray(cols, rows) {
 function replaceEmptySpots() {
     for (var i = 0; i < cols; i++) {
         for (var j = 0; j < rows; j++) {
-            if(playField[j][i] == "") {  
+            if(playField[j][i].color == "black") {  
                 var randomColor = random(colors);
                 x = i * 100;
                 y = j * 100;
