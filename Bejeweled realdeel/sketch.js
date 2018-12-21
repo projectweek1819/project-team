@@ -37,18 +37,6 @@ function make2Darray(cols, rows) {
     return playField;
 }
 
-function copyArray(grid){ //maakt een kopie van de geselecteerde grid
-    copy = [];
-    for (var i = 0; i < cols; i++) {
-        copij = [];
-        for (var j = 0; j < rows; j++) {
-            copij.push(grid[j][i]);
-        }
-        copy.push(copij);
-    }
-    return copy;
-}
-
 //gives position of grid item
 function mousePressed(){
     //checks if mouse position is inside canvas and return it
