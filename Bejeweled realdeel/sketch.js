@@ -195,3 +195,17 @@ function updateBlockColor(j,i , strKleur) {
     stroke(85);
     rect(x, y, 100, 100);
 }
+
+function collapse(grid){
+    for (a = 1; a < grid.length; a++){
+        for (i = 0; i < grid.length; i++){
+            for (j = 0; j < grid[0].length; j++){
+                if(grid[i][j].color == "black" && i>0){
+                    p = {x: j*100, y: i*100};
+                    q = {x: (j)*100, y: (i-1)*100};
+                    swap(playField, p, q);
+                }
+            }
+        }
+    }
+}
