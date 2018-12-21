@@ -185,3 +185,9 @@ function collapse(grid){
         }
     }
 }
+
+function checker(grid) {
+    removeChains(grid);
+    collapse(grid);
+    replaceEmptySpots();
+}
