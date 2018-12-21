@@ -191,3 +191,27 @@ function checker(grid) {
     collapse(grid);
     replaceEmptySpots();
 }
+
+function neighbourCheck(p,q){
+    return (Math.abs(p.x-q.x) + Math.abs(p.y-q.y)==1);
+}
+
+function userswap(grid,p,q){
+    xp = p.x - 1;
+    xq = q.x - 1;
+    yp = rows - p.y;
+    yq = rows - q.y;
+    if(neighbourCheck(p,q)) {
+        var blok1 = grid[yp][xp].color;
+        var blok2 = grid[yq][xq].color;
+        updateBlockColor(yp, xp, blok2);
+        updateBlockColor(yq, xq, blok1);
+    }
+    return playField;
+}
+
+function userchecker(grid) {
+    removeChains(grid);
+    collapse(grid);
+    replaceEmptySpots();
+}
