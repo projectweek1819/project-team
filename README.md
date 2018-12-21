@@ -21,4 +21,9 @@ There are 2 functions for you to use:
       Keep repeating the use of this function untill there are no chains of 3 or more identically coloured tiles left.
 Alternating between using these 2 functions will make you able to play the game.      
 
-Note: we have not implemented a scoring system yet, so there is currently no real way to track your score.
+Notes: 
+  - We have not implemented a scoring system yet, so there is currently no real way to track your score.
+  - If you want to change up the size of your field, open 'sketch.js' in a text editor of your choice and check the first 2 lines.
+      Change them to "var cols = X" and "var rows = Y" to change the playfield to use X columns and Y rows,
+      with X and Y being numbers of your own choice.
+        
