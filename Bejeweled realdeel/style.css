@@ -14,3 +14,7 @@ body {
     border-radius: 30px;
     margin: auto;
 }
+
+h1, p {
+    color: white;
+}
