@@ -126,18 +126,6 @@ function swap(grid,p,q){ //verwisselt de kleuren van twee vakken binnen het play
     return playField;
 }
 
-function copyArray(grid){ //maakt een kopie van de geselecteerde grid
-    copy = [];
-    for (var i = 0; i < cols; i++) {
-        copij = [];
-        for (var j = 0; j < rows; j++) {
-            copij.push(grid[j][i]);
-        }
-        copy.push(copij);
-    }
-    return copy;
-}
-
 function removeChains(grid){
 
     var places = []
