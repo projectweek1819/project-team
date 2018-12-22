@@ -1,10 +1,11 @@
 var cols = 7; //just change this nr if you want it to be bigger
 var rows = cols;
+var wdt = 800/cols;
 var colors = ["#800014" /*red*/ , "#3F8000" /*green*/ , "#0354A6" /*blue*/ , "orange", "purple", "#CC7722" /*Ochre*/ ];
 var score = 0
 
 function setup() {
-    createCanvas(cols*100+1, rows*100+1); // responsive canvas (+1 voor laatste lijn)
+    createCanvas(cols*wdt+1, rows*wdt+1); // responsive canvas (+1 voor laatste lijn)
 }
 
 function draw() {
@@ -26,13 +27,13 @@ function make2Darray(cols, rows) {
     for (var i = 0; i < cols; i++) {
         for (var j = 0; j < rows; j++) {
             var randomColor = random(colors);
-                x = i * 100;
-                y = j * 100;
-                playField[j][i] = { color: randomColor, position: { x: x, y: y}, width: 100};
+                x = i * wdt;
+                y = j * wdt;
+                playField[j][i] = { color: randomColor, position: { x: x, y: y}, width: wdt};
                 //fills block with exact same randomColor value as the element
                 fill(playField[j][i].color);
                 stroke(0);
-                rect(x, y, 100, 100);
+                rect(x, y, wdt, wdt);
         }
     }
     return playField;
@@ -41,7 +42,7 @@ function make2Darray(cols, rows) {
 //gives position of grid item
 function mousePressed(){
     //checks if mouse position is inside canvas and return it
-    if(mouseX<rows*100 && mouseY<cols*100){
+    if(mouseX<rows*wdt && mouseY<cols*wdt){
         return mousePos = findElement({x: mouseX, y: mouseY});
     
       }
@@ -51,8 +52,8 @@ function mousePressed(){
 
 //checks how much blocks of same color are horizontally next to eachother
 function horizontalChainAt(grid, position) {
-    x = position.x / 100;
-    y = position.y / 100;
+    x = position.x / wdt;
+    y = position.y / wdt;
     let t = 1;
     let i = 1;
     while (x - i > -1 && grid[y][x - i].color == grid[y][x].color) {
@@ -69,8 +70,8 @@ function horizontalChainAt(grid, position) {
 
 //checks how much blocks of same color are vertically next to eachother
 function verticalChainAt(grid, position) {
-    x = position.x / 100;
-    y = position.y / 100;
+    x = position.x / wdt;
+    y = position.y / wdt;
     let t = 1;
     let i = 1;
     while (y - i >= 0 && grid[y - i][x].color == grid[y][x].color) {
@@ -91,13 +92,13 @@ function replaceEmptySpots() {
         for (var j = 0; j < rows; j++) {
             if(playField[j][i].color == "black") {  
                 var randomColor = random(colors);
-                x = i * 100;
-                y = j * 100;
-                playField[j][i] = { color: randomColor, position: { x: x, y: y}, width: 100};
+                x = i * wdt;
+                y = j * wdt;
+                playField[j][i] = { color: randomColor, position: { x: x, y: y}, width: wdt};
                 //fills block with exact same randomColor value as the element
                 fill(playField[j][i].color);
                 stroke(0);
-                rect(x, y, 100, 100);
+                rect(x, y, wdt, wdt);
             }
         }
     }
@@ -116,10 +117,10 @@ function isInside(grid, position) {
 
 function swap(grid,p,q){ //verwisselt de kleuren van twee vakken binnen het playField
     //y is rijen, x is plaats in de rij
-    px = p.x/100;
-    py = p.y/100;
-    qx = q.x/100;
-    qy = q.y/100;
+    px = p.x/wdt;
+    py = p.y/wdt;
+    qx = q.x/wdt;
+    qy = q.y/wdt;
     var blockKleur1 = playField[py][px].color
     var blockKleur2 = playField[qy][qx].color
     updateBlockColor(py,px, blockKleur2);
@@ -131,8 +132,8 @@ function removeChains(grid){
     var places = [];
     for (i = 0; i < cols; i++){
         for (j = 0; j < rows; j++){
-            v = verticalChainAt(grid, {x: (i*100), y: (j*100)});
-            h = horizontalChainAt(grid, {x: (i*100), y: (j*100)});
+            v = verticalChainAt(grid, {x: (i*wdt), y: (j*wdt)});
+            h = horizontalChainAt(grid, {x: (i*wdt), y: (j*wdt)});
             if (v == 3 || h == 3){
                 score += 1;
                 places.push({x: i, y: j});
@@ -172,8 +173,8 @@ function removeChains(grid){
 }
 
 function findElement(position) { //geeft de beginpositie van het aangeklikte vakje aan
-    x = position.x - position.x % 100;
-    y = position.y - position.y % 100;
+    x = position.x - position.x % wdt;
+    y = position.y - position.y % wdt;
     return element = {x: x, y: y};
 }
 
@@ -186,12 +187,12 @@ function heightArray(grid) {
 }
 
 function updateBlockColor(j,i , strKleur) {
-    x = i * 100;
-    y = j * 100;
-    playField[j][i] = { color: strKleur, position: { x: x, y: y}, width: 100};
+    x = i * wdt;
+    y = j * wdt;
+    playField[j][i] = { color: strKleur, position: { x: x, y: y}, width: wdt};
     fill(playField[j][i].color);
     stroke(85);
-    rect(x, y, 100, 100);
+    rect(x, y, wdt, wdt);
 }
 
 function collapse(grid){
@@ -199,8 +200,8 @@ function collapse(grid){
         for (i = 0; i < grid.length; i++){
             for (j = 0; j < grid[0].length; j++){
                 if(grid[i][j].color == "black" && i>0){
-                    p = {x: j*100, y: i*100};
-                    q = {x: (j)*100, y: (i-1)*100};
+                    p = {x: j*wdt, y: i*wdt};
+                    q = {x: (j)*wdt, y: (i-1)*wdt};
                     swap(playField, p, q);
                 }
             }
