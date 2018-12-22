@@ -19,10 +19,10 @@ There are 2 functions for you to use:
       drop filled tiles above down like pulled by gravity, and then drop some new tiles to fill up all empty spaced.
       To properly use this function, simply type "userchecker(playField)".
       Keep repeating the use of this function untill there are no chains of 3 or more identically coloured tiles left.
+      Using this function will also show your current score in the console.
 Alternating between using these 2 functions will make you able to play the game.      
 
 Notes: 
-  - We have not implemented a scoring system yet, so there is currently no real way to track your score.
   - If you want to change up the size of your field, open 'sketch.js' in a text editor of your choice and check the first 2 lines.
       Change them to "var cols = X" and "var rows = Y" to change the playfield to use X columns and Y rows,
       with X and Y being numbers of your own choice.
