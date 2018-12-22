@@ -23,7 +23,5 @@ There are 2 functions for you to use:
 Alternating between using these 2 functions will make you able to play the game.      
 
 Notes: 
-  - If you want to change up the size of your field, open 'sketch.js' in a text editor of your choice and check the first 2 lines.
-      Change them to "var cols = X" and "var rows = Y" to change the playfield to use X columns and Y rows,
-      with X and Y being numbers of your own choice.
-        
+  - If you want to change up the size of your field, open 'sketch.js' in a text editor of your choice and check the first line.
+      Change it to "var cols = X" to change the playfield to use X columns and rows, with X being a number of your own choice.
