@@ -1,6 +1,7 @@
 var cols = 7; //just change this nr if you want it to be bigger
 var rows = cols;
 var colors = ["#800014" /*red*/ , "#3F8000" /*green*/ , "#0354A6" /*blue*/ , "orange", "purple", "#CC7722" /*Ochre*/ ];
+var score = 0
 
 function setup() {
     createCanvas(cols*100+1, rows*100+1); // responsive canvas (+1 voor laatste lijn)
@@ -127,25 +128,46 @@ function swap(grid,p,q){ //verwisselt de kleuren van twee vakken binnen het play
 }
 
 function removeChains(grid){
-
-    var places = []
-    for (i = 0; i < widthArray(grid); i++){
-        for (j = 0; j < heightArray(grid); j++)
-        {
-            if (verticalChainAt(grid, {x: (i*100), y: (j*100)}) > 2) {
-               places.push({x: i, y: j})
+    var places = [];
+    for (i = 0; i < cols; i++){
+        for (j = 0; j < rows; j++){
+            v = verticalChainAt(grid, {x: (i*100), y: (j*100)});
+            h = horizontalChainAt(grid, {x: (i*100), y: (j*100)});
+            if (v == 3 || h == 3){
+                score += 1;
+                places.push({x: i, y: j});
             }
-            if (horizontalChainAt(grid, {x: (i*100), y: (j*100)}) > 2){
-                places.push({x: i, y: j})
+            if (v == 4 || h == 4){
+                score += 2;
+                places.push({x: i, y: j});
+            }
+            if (v == 5 || h == 5){
+                score += 4;
+                places.push({x: i, y: j});
+            }
+            if (v == 6 || h == 6){
+                score += 8;
+                places.push({x: i, y: j});
+            }
+            if (v == 7 || h == 7){
+                score += 16;
+                places.push({x: i, y: j});
+            }
+            if (v == 8 || h == 8){
+                score += 32;
+                places.push({x: i, y: j});
+            }
+            if (v == 9 || h == 9){
+                score += 64;
+                places.push({x: i, y: j});
             }
         }
     }
     for (v=0; v < places.length; v++) {
-       let x = places[v].x
-       let  y = places[v].y
-        updateBlockColor(y, x, "black")
+        let x = places[v].x;
+        let  y = places[v].y;
+        updateBlockColor(y, x, "black");
     }
-
     return playField;
 }
 
@@ -214,4 +236,5 @@ function userchecker(grid) {
     removeChains(grid);
     collapse(grid);
     replaceEmptySpots();
+    return "your current score is:" + (score*1203);
 }
