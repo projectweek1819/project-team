@@ -134,32 +134,12 @@ function removeChains(grid){
         for (j = 0; j < rows; j++){
             v = verticalChainAt(grid, {x: (i*wdt), y: (j*wdt)});
             h = horizontalChainAt(grid, {x: (i*wdt), y: (j*wdt)});
-            if (v == 3 || h == 3){
-                score += 1;
+            if (v >= 3){
+                score = score + 2**(v-2);
                 places.push({x: i, y: j});
             }
-            if (v == 4 || h == 4){
-                score += 2;
-                places.push({x: i, y: j});
-            }
-            if (v == 5 || h == 5){
-                score += 4;
-                places.push({x: i, y: j});
-            }
-            if (v == 6 || h == 6){
-                score += 8;
-                places.push({x: i, y: j});
-            }
-            if (v == 7 || h == 7){
-                score += 16;
-                places.push({x: i, y: j});
-            }
-            if (v == 8 || h == 8){
-                score += 32;
-                places.push({x: i, y: j});
-            }
-            if (v == 9 || h == 9){
-                score += 64;
+            if (h >= 3){
+                score = score + 2**(h-2);
                 places.push({x: i, y: j});
             }
         }
